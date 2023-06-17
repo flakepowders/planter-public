@@ -1,0 +1,436 @@
+.subscribe {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+}
+
+.channel {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+}
+
+
+
+body {
+    margin: 0;
+    background-color: rgba(3, 255, 150, 0.108);
+    background: #11998e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #38ef7e61, #11998e58);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #38ef7e54, #11998e54); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.login {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: 100px auto;
+}
+.login h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.login form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.login form label[class="inputicon"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #23d753;
+    color: #ffffff;
+}
+.login form input[type="password"], .login form input[type="text"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+.login form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+   margin-top: 20px;
+    background-color: #23d753;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+  background-color: #2ca32a;
+    transition: background-color 0.2s;
+}
+.profile h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+
+.channel h1 {
+    text-align: center;
+    color: #5b6574;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+
+.channel h4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 7px;
+}
+.channel h5 {
+    color: "#2ca32a";
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 7px;
+}
+
+.profile form input[type="button"] {
+    background-color: #2ca32a;
+      transition: background-color 0.2s;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  display: flex;
+  /* position: fixed; */
+
+
+  background-color: white;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  /* border-bottom: #000;
+  border-bottom-style: solid;
+  border-bottom-width: 0.5px; */
+
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+ 
+  text-decoration: none;
+
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+  .addeventbutton {
+    cursor: pointer;
+    border: 1px solid #0d882e;
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    color: #0d882e;
+    font-size: 0.5em;
+}
+
+.kanit {
+  font-family: 'Kanit', sans-serif;
+}
+
+
+.addeventbutton{
+    opacity:0;
+}
+.date:hover .addeventbutton{ 
+	opacity:1;
+}
+
+.userinfo{
+    display: flex;
+    color: rgb(0, 0, 0);
+    font-size: 1.5em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 50px;
+    
+  
+  }
+  
+
+  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#privateswitch {
+    width:100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    /* left margin */
+    margin-left: 10px;
+    /* margin between elements */
+    margin-bottom: 10px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+ 
+  border-radius: 10px;
+  
+}
+.subcontainer{
+  display: flex;
+  margin: 20px;
+  border-radius: 20px;
+
+  background-color: white;
+  font-size: larger;
+  box-shadow: 5px 5px 5px 5px #888888;
+
+
+ 
+}
+
+
+A{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+
+.arrow {
+  position: relative;
+}
+
+.arrow::after {
+  position: absolute;
+  left: 0; 
+  top: 0; 
+  content: '';
+  width: 50px; /* 사이즈 */
+  height: 50px; /* 사이즈 */
+  border-top: 5px solid #000; /* 선 두께 */
+  border-right: 5px solid #000; /* 선 두께 */
+  transform: rotate(225deg); /* 각도 */
+}
+
+
+.greenbtn{
+display: flex;
+outline: none;
+cursor: pointer;
+width: 30px;
+height: 30px;
+
+border-radius: 50%;
+margin: 10px;
+
+transition-property: background-color,border-color,color,box-shadow,filter;
+transition-duration: .3s;
+border: 1px solid transparent;
+text-transform: uppercase;
+font-weight: 700;
+text-align: center;
+background-color: white;
+color: #1ED760;
+
+justify-content: center;
+align-items: center;
+
+}
+
+.greenbtn:hover{
+    transform: scale(1.04);
+    background-color: #21e065;
+}
+
+
+.greenbtn-long{
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  height: 30px;
+  
+  border-radius: 50%;
+  margin: 10px;
+  
+  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background-color: #1ED760;
+  justify-content: center;
+  align-items: center;
+  
+  }
+  
+  .greenbtn:hover{
+      transform: scale(1.04);
+      background-color: #21e065;
+  }
+  
+  .hover-font-color:hover{
+    background:  linear-gradient( 135deg, #70F570 10%, #49C628 100%);; background-clip: text;  -webkit-background-clip: text;   -webkit-text-fill-color: transparent;"
+  
+  }
+
+
+
+  /* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: white;
+  min-height: 50px;
+  
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #04AA6D;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}

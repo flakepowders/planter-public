@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Channels - Planter</title>
+    <!-- the form awesome library is used to add icons to our form -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- include the stylesheet file -->
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link href="/channel.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/fancybtn.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" href="/images/likeli.png">  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+</head>
+
+<body>
+    <div class="topnav" id="topnav" style="max-height: 70px; box-shadow: 10px 5px 5px 3px #8888883b;">
+
+        
+        <interbox style="display: flex; ">
+            <img src="../images/planterlogo.png" width="40px" alt="My Image" style="padding:  10px 10px;">  
+            
+                <div style="display: flex; padding: 10px 10px; margin-right: 20px; font-weight: 1000; text-align: center; align-items: center; font-size: 40px; background:  linear-gradient( 135deg, #70F570 10%, #49C628 100%);; background-clip: text;  -webkit-background-clip: text;   -webkit-text-fill-color: transparent;" class="kanit" >planter</div>   
+            <a href="/calendar" id="calendernav" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Calendar</a>
+            <a href="/channel" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Channel</a>
+            <a href="/account" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Account</a>
+            <a href="/logout" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Log Out</a>
+        </interbox>
+        <div class="userinfo" style="display: flex; align-items: center; justify-content: center;">
+            <div class="material-symbols-outlined" style="display: flex; margin-right: 10px; font-size: 30px;">
+                account_circle
+            </div>
+            <div style="display: flex;" class="kanit"><%= nickname %></div>
+        </div>
+    </div>
+    <div class="subnav"></div>
+    <div class="navbar" id="navbar">
+        <div class="dropdown">
+        <interbox style="display: flex;">
+        <img src="../images/planterlogo.png" width="40px" alt="My Image" style="padding:  10px 10px;"> 
+        <div style="display: flex; padding: 10px 10px; margin-right: 20px; font-weight: 1000; text-align: center; align-items: center; font-size: 40px; background:  linear-gradient( 135deg, #70F570 10%, #49C628 100%);; background-clip: text;  -webkit-background-clip: text;   -webkit-text-fill-color: transparent;" class="kanit" >planter</div>    
+        
+          <button class="dropbtn">Menu
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/calendar" id="calendernav" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Calendar</a>
+            <a href="/channel" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Channel</a>
+            <a href="/account" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Account</a>
+            <a href="/logout" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Log Out</a>
+          </div>
+        </div>
+    </interbox>
+      </div>
+      <script>
+        var x = document.getElementById("navbar");
+        var y = document.getElementById("topnav");
+        if (window.innerWidth > 900) {
+            x.style.display = "none";
+            y.style.display = "flex";
+        } else {
+            x.style.display = "flex";
+            y.style.display = "none";
+        }
+    </script>
+    
+    <div class="container kanit" style="flex-direction: row; justify-content: center;">
+        <div></div>
+        <div class="title-calendar">
+            <h1>Manage Channels</h1>
+        </div>
+        <form action="/channel/confirm" method="post">
+
+
+    </div>
+
+    <% for(var i=0; i<subscribed.length; i++) {%>
+        <% if(subscribed[i].personal) { %>
+            <input type="checkbox" hidden id="<%= subscribed[i].name %>"
+                            name="[<%= subscribed[i].name %>]" checked="checked">
+        <% } else { %>
+        <div class="subcontainer border-ten">
+            <div class="leftcon">
+                <div class="channelname">
+                    <%= subscribed[i].name %> <input type="checkbox" id="<%= subscribed[i].name %>"
+                            name="[<%= subscribed[i].name %>]" checked="checked">
+                </div>
+               
+                  <!-- <input type="checkbox" id="_checkbox">
+                  <label for="_checkbox">
+                    <div id="tick_mark"></div>
+                  </label> -->
+
+                <div class="chancontent">Owner: <%= subscribed[i].owner %>
+                </div>
+                <div class="chancontent">
+                    <%= subscribed[i].membercount %> members
+                </div>
+                <% if(subscribed[i].private) { %>
+                    <div class="chancontent">Invite Code <%= subscribed[i].invcode %> </div>  
+                <% } %>              
+
+            </div>
+            <div style="background-color: <%= subscribed[i].color %>; width:5px;">
+    
+            </div>
+            <div class="rightcon">
+                <div class="contentbox">
+                    <%= subscribed[i].description %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% } %>
+
+            <% for(var i=0; i<notsublist.length; i++) {%>
+                <div class="subcontainer border-ten">
+                    <div class="leftcon">
+                        <div class="channelname">
+                            <%= notsublist[i].name %> <input type="checkbox" id="<%= notsublist[i].name %>"
+                                    name="[<%= notsublist[i].name %>]">
+                        </div>
+
+                        <div class="chancontent">Owner: <%= notsublist[i].owner %>
+                        </div>
+                        <div class="chancontent">
+                            <%= notsublist[i].membercount %> members
+                        </div>
+
+
+
+                    </div>
+                    <div class="rightcon">
+                        <div class="contentbox">
+                            <%= notsublist[i].description %>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                    <formcon>
+                        <input class="buttons btn-hover color-5" type="submit" value="Submit">
+                        <A href="/channel/add" class="buttons btn-hover color-5" style="text-decoration: none;"> Add channel </A>
+                        <A href="/redeem" class="buttons btn-hover color-5" style="text-decoration: none;"> Redeem Code </A>
+                    </formcon>
+
+
+
+                    </form>
+
+                    </div>
+</body>
+
+</html>

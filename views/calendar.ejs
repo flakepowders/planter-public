@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!-- <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> -->
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <link rel="stylesheet" href="/calendar.css">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link href="/modal.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <title>Calender - Planter</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/images/likeli.png">    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>   
+    <script src="js/mymodal.js" type='text/javascript'></script>
+
+
+    
+
+
+</head>
+
+<body>
+    <script>
+         clickeddate= <%= today %>;
+    </script>
+    <div class="topnav" id="topnav" style="max-height: 70px; box-shadow: 10px 5px 5px 3px #8888883b;">
+
+        
+        <interbox style="display: flex; ">
+            <img src="../images/planterlogo.png" width="40px" alt="My Image" style="padding:  10px 10px;">  
+            
+                <div style="display: flex; padding: 10px 10px; margin-right: 20px; font-weight: 1000; text-align: center; align-items: center; font-size: 40px; background:  linear-gradient( 135deg, #70F570 10%, #49C628 100%);; background-clip: text;  -webkit-background-clip: text;   -webkit-text-fill-color: transparent;" class="kanit" >planter</div>   
+            <a href="/calendar" id="calendernav" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Calendar</a>
+            <a href="/channel" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Channel</a>
+            <a href="/account" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Account</a>
+            <a href="/logout" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Log Out</a>
+        </interbox>
+        <div class="userinfo" style="display: flex; align-items: center; justify-content: center;">
+            <div class="material-symbols-outlined" style="display: flex; margin-right: 10px; font-size: 30px;">
+                account_circle
+            </div>
+            <div style="display: flex;" class="kanit"><%= nickname %></div>
+        </div>
+    </div>
+    <div class="subnav"></div>
+    <div class="navbar" id="navbar">
+        <div class="dropdown">
+        <interbox style="display: flex;">
+        <img src="../images/planterlogo.png" width="40px" alt="My Image" style="padding:  10px 10px;"> 
+        <div style="display: flex; padding: 10px 10px; margin-right: 20px; font-weight: 1000; text-align: center; align-items: center; font-size: 40px; background:  linear-gradient( 135deg, #70F570 10%, #49C628 100%);; background-clip: text;  -webkit-background-clip: text;   -webkit-text-fill-color: transparent;" class="kanit" >planter</div>    
+        
+          <button class="dropbtn">Menu
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/calendar" id="calendernav" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Calendar</a>
+            <a href="/channel" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Channel</a>
+            <a href="/account" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Account</a>
+            <a href="/logout" class="hover-font-color kanit" style="font-size: 20px; padding: 10px 14px;">Log Out</a>
+          </div>
+        </div>
+    </interbox>
+      </div>
+      <script>
+        var x = document.getElementById("navbar");
+        var y = document.getElementById("topnav");
+        if (window.innerWidth > 900) {
+            x.style.display = "none";
+            y.style.display = "flex";
+        } else {
+            x.style.display = "flex";
+            y.style.display = "none";
+        }
+    </script>
+
+
+    <header>
+        
+        <leftmainveiw class="contaioner" style="display: flex; margin-left: 20px; flex-direction: column;">
+            <div class="contaioner kanit topviewpanel" style="display: flex; font-size: 100px; justify-content: end; align-items: end;">
+                <div class="title-date"><%= today %>      </div>
+                <div class="title-dayofweek" style="font-size: 50px; margin-left: 10px; margin-right: 30px;"><%= daynames[todayweekday] %></div>    
+            </div>
+            <div style="height: 100%; background-color: white; margin: 10px;">
+                <div id="title-shortview">
+            </div>
+            
+        
+
+            
+            <% for(let x=0;x < calendar[0].length ;x++) { %>
+                <% for(let y=0;y < calendar[0][x].length;y++) { %>
+                    <% if(calendar[0][x][y].date == today) { %>
+                            <% for(let i=0;i < calendar[0][x][y].events.length;i++) { %>
+
+                                <button onclick="document.getElementById('date<%= calendar[0][x][y].date %>ind<%= i %>').style.display = 'flex';" class="modal-open datesch">
+                                    <%= calendar[0][x][y].events[i].name %>
+                                </button>
+                            <% } %>
+                    <% } %>
+                <% } %>
+            <% } %> 
+            
+
+
+
+            
+            
+      
+            
+
+            </div>
+        </leftmainveiw>
+
+        <rightmainveiw style="border-radius: 0px 10px 10px 0px">
+            <div class="subcontainer3">
+                <div class="subcontainer2">
+                   <div style="display: flex; flex-direction: row; align-items: center;"> 
+                    <button class="panell" style="margin-left: 10px; border-radius: 30%;">
+                        <div style="display: flex; position: relative; justify-content: center; align-items: center; text-align: center;"  class="material-symbols-outlined">
+                            arrow_left
+                        </div>
+                    </button>
+                    <button  class="panelr" style="margin-left: 10px; display: none; border-radius: 30%;">
+                        <div style="display: flex; position: relative; justify-content: center; align-items: center; text-align: center;" class="material-symbols-outlined">
+                            arrow_right
+                        </div>
+                    </button>
+                    <titleyear>
+                        <form action="/calendar" method="get">
+                            <input type="hidden" name="year" value="<%= (year*1)-1 %>">
+                            <input type="hidden" name="month" value="<%= month %>">
+                            <button class="kanit greenbtn" type="submit">
+                                <span class="material-symbols-outlined">
+                                    arrow_back_ios
+                                    </span>    
+                            </button>
+                        </form>
+                        <div class="kanit titlemonth">
+                            <%= year %>
+                        </div>
+                        <form action="/calendar" method="get">
+                            <input type="hidden" name="year" value="<%= (year*1)+1 %>">
+                            <input type="hidden" name="month" value="<%= month %>">
+                            <button class="greenbtn" type="submit">
+                                <span class="material-symbols-outlined">
+                                    arrow_forward_ios
+                                    </span>
+                            </button>
+                        </form>
+                </titleyear>
+           
+            
+            <form action="/calendar" method="get" class="hidden">
+                <input type="text" placeholder="Year" value="<%= year %>" name="year">
+                <select name="month" id="month">
+                    <% for(let i=0; i < 12; i++) {%>
+                        <% if(month==i+1) { %>
+                            <option value="<%= i+1 %>" selected>
+                                <%= months[i] %>
+                            </option>
+                            <% } else { %>
+                                <option value="<%= i+1 %>">
+                                    <%= months[i] %>
+                                </option>
+                                <% } %>
+                                    <% } %>
+                </select>
+                <button type="submit">search</button>
+            </form>
+            <form action="/calendar" method="get">
+                <input type="hidden" name="year" value="<%= todayyear %>">
+                <input type="hidden" name="month" value="<%= todaymonth %>">
+            <button class="kanit new-green-btn" type="submit">
+                today
+            </button>
+            
+
+
+        </div>
+            </form>
+            
+
+
+            <div class="titlemonth">
+                <form action="/calendar" method="get" style="display:inline">
+                    <input type="hidden" name="year" value="<%= month!=1 ? year : (year*1)-1 %>">
+                    <input type="hidden" name="month" value="<%= month!=1 ? (month*1)-1 : 12 %>">
+    
+                            <button class="greenbtn" type="submit">
+                                <span class="material-symbols-outlined">
+                                    arrow_back_ios
+                                    </span>
+                                </button>
+                        </form>
+                
+                    <div class="kanit" style="font-size: 50px; width: 250px;">
+                            <%= months[month-1] %>
+                        </div>
+                    
+                        <form action="/calendar" method="get" style="display:inline">
+                            <input type="hidden" name="year" value="<%= month!=12 ? year : (year*1)+1 %>">
+                            <input type="hidden" name="month" value="<%= month!=12 ? (month*1)+1 : 1 %>">
+    
+                            <button class="greenbtn" type="submit">
+
+                                <span class="material-symbols-outlined">
+                                    arrow_forward_ios
+                                    </span>
+                            </button>
+                        </form>
+                        
+                    </div>
+
+                   
+                    <titlecalendar>Calendar</titlecalendar>
+
+                </div>
+
+            </div>
+            <!-- real calendar  -->
+            <div class="calendar-container">
+                <% for(let m=0;m < calendar.length;m++) { %>
+                    <div class="month-container" id="<%= months[month-1] %>">
+
+                        <div class="day-of-week">
+                            <span>Sun</span><span>Mon</span><span>Tue</span><span>
+                                Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                        </div>
+                        <script>
+                            var datenum = 0;
+                            var clickeddate= <%= today %>;
+                            
+                        </script>
+                 
+                        <% for(let x=0;x < calendar[m].length ;x++) { %>
+
+                            <div class="days" id="week<%= x %>">
+                                <% if(x!=0 && !(calendar[m][x][0].date)){ %>
+                                    <script>
+                                        $("#week<%= x %>").css("display", "none");
+                                    </script>
+                                    <% } %>
+                                        <% for(let y=0;y < calendar[m][x].length;y++) { %>
+
+                                            <div class="date prevent-overflow" id="day<%=calendar[m][x][y].date %>" onclick="clickeddate='<%= calendar[m][x][y].date %>'; zzz(clickeddate);">
+                                                <script>
+                                                    function zzz(temp){
+                                                        console.log(temp);                                                     
+                                                        clickeddate = temp;
+                                                      
+                                                    }
+                                                    
+
+                                                </script>
+                                                
+                                                
+
+
+                                                <% if(calendar[m][x][y].date){ %>
+                                                    <script>
+                                                        $("#day<%= calendar[m][x][y].date %>").addClass("valid");
+                                                        datenum++;
+                                                        
+                                                       
+                                                    </script>
+                                                    
+                                                                        <!-- calheader -->
+                                                    <div id="<%=calendar[m][x][y].date %>" class="calheader" style="position: relative;">
+                                                        <form action="/calendar/addevent" method="get" id="formform" >
+                                                            <input type="hidden" name="year" value="<%= year %>">
+                                                            <input type="hidden" name="month" value="<%= month %>">
+                                                            <input type="hidden" name="date" value="<%= calendar[m][x][y].date %>">
+                                                            <button style="width: 100%; height: 100%; border: 0px; text-align: center" type="submit" class="addeventbutton"><span style="font-size: 25px;" class="material-symbols-outlined">
+                                                                add_box
+                                                                </span>
+                                                            </button>
+
+                                                        </form>
+
+                                                        <% if(calendar[m][x][y].date==today && todaymonth==month &&
+                                                            todayyear==year){ %>
+                                                            <strong>
+                                                                <font class="date-num" color="#00ffff">
+                                                                    <%= calendar[m][x][y].date %>
+                                                                </font>
+                                                            </strong>
+
+                                                            <% } else if(y==0){ %>
+                                                                <strong>
+                                                                    <font class="date-num" color="red">
+                                                                        <%= calendar[m][x][y].date %>
+                                                                    </font>
+                                                                </strong>
+                                                               
+                                                                <% } else if(y==6) { %>
+                                                                    <strong>
+                                                                        <font class="date-num" color="blue">
+                                                                            <%= calendar[m][x][y].date %>
+                                                                        </font>
+                                                                    </strong>
+                                                                    <% } else { %>
+                                                                        <strong>
+                                                                            <font class="date-num">
+                                                                            <%= calendar[m][x][y].date %>
+                                                                            </font>
+                                                                        </strong>
+                                                                        <% } %>
+                                                                        <% if (calendar[m][x][y].events.length!=0) {%>
+
+                                                                            <button numschbtn style="background-color:white;">                                                                            
+                                                                                <%= calendar[m][x][y].events.length  %>   
+                                                                            </button>
+                                                                        <% } else { %>
+                                                                            <div></div>
+
+                                                                            <% } %>
+
+                                                    </div>
+
+                                                    <div style="display: flex; flex-direction: column;">
+                                                        <% for(let i=0;i < calendar[m][x][y].events.length;i++) { %>
+                                                    
+                                                            <button onclick="document.getElementById('date<%= calendar[m][x][y].date %>ind<%= i %>').style.display = 'flex';" class="modal-open datesch" style="color:<%= calendar[m][x][y].events[i].color%>">
+                                                                <%= calendar[m][x][y].events[i].name %>  
+                                                            </button>
+
+
+
+<div class="modal" id="date<%= calendar[m][x][y].date %>ind<%= i %>">
+    <div class="modal_content" style="padding-left: 30px; padding-right: 30px; padding-top: 40px;">
+        <div class="scdmodal-nav" style="display: flex; width: 100%; justify-content: end; position: absolute; right: 10px; top: 10px;">
+    
+                        <span class="material-symbols-outlined cuser">push_pin</span>
+
+
+                        
+                        
+                       
+                        
+                            
+                            <button id="scd-delete-btn" class="material-symbols-outlined" onclick="document.getElementById('deletebtn<%= calendar[m][x][y].date %>ind<%= i %>').style.display = 'flex';" style="background-color: rgba(240, 248, 255, 0);" type="submit"  title="delete">delete</button>
+                       
+                        <div class="modal" id="deletebtn<%= calendar[m][x][y].date %>ind<%= i %>">
+                            <div class="modal_content" style="display: flex; justify-content: center; align-items: center;">
+                            정말로 삭제하시겠습니까?
+                             <form action="/calendar/deleteevent" method="post" style="display:inline;">
+                            <input type="hidden" name="eid" value="<%=  calendar[m][x][y].events[i].eid %>">    
+                            <button  class="" style="margin-bottom: 20px; background-color: rgba(240, 248, 255, 0); color: red; font-size: 30px; font-weight: 500;" type="submit"  title="delete">예</button>
+                        </form> 
+                            <div style="display: inline; font-size: 30px; font-weight: 500;" class="cuser" onclick="document.getElementById('deletebtn<%= calendar[m][x][y].date %>ind<%= i %>').style.display = 'none';"> 아니요 </div>
+                            </div>                
+                            </div>
+                        
+                        
+                        
+                        <span class="material-symbols-outlined modal-close-btn cuser">close</span>
+                        
+                        
+                        </div>
+
+        <div class="sch-title kanit" style="display: flex; width: 100%; height: 100%; " >
+
+            <div style="display: flex; border-radius: 30%;  background-color: <%= calendar[m][x][y].events[i].color %>; min-width: 20px; height: 20px; margin-right:5px; position: relative; top: 15px; "> </div>
+                        <div style="display: flex; font-weight: 900; text-align: left; letter-spacing : normal; word-break:break-all; line-height : 100%; margin-left: 10px;"> <%= calendar[m][x][y].events[i].name %></div>
+        </div>
+                        <div class="modal-dateinfo" style="width: 100%; text-align: left; margin: 10px 0px 30px 0px; align-items: center; justify-content: center;">
+                            <div style="display: flex;">
+                            <span class="material-symbols-outlined">schedule</span>
+                           
+                            <div style="display: flex; margin-left: 10px;">
+                            <%= months[month-1] %> 
+                            <%= calendar[m][x][y].date %>th
+                            (<%= daynames[y]  %>)
+                            </div>
+                            </div>    
+                        </div>                
+
+                    <div class="sch-description" style="width: 100%; height: 100%; min-height: 50px; text-align: left; justify-content: center;">
+                        <span class="material-symbols-outlined" style="position: relative; top: 5px;">event_note</span>
+                        <%= calendar[m][x][y].events[i].description %>
+                    </div>
+                    <div style="display: flex; margin-bottom:10px;  margin-top: 10px;">
+                        <span class="material-symbols-outlined">add_reaction</span>
+                    
+                    <div class="sch-uploader" style="margin-left: 10px;">
+                        Added by <strong><%= calendar[m][x][y].events[i].owner %></strong>   
+                    </div>
+                    <div class="sch-channel" style="color: <%= calendar[m][x][y].events[i].color %>;">
+                        &nbsp; in Channel &nbsp; <strong><%= calendar[m][x][y].events[i].channel.startsWith("Personal channel") ? "Personal" : calendar[m][x][y].events[i].channel %></strong>
+                    </div>
+                        </div>
+                   
+                    </div>
+            </div>
+           
+
+                                                            <% } %>   <!-- end of for 각일정 loop -->
+
+
+
+
+                                                    </div>
+
+
+                                                    <% } %>
+
+                                            </div>
+
+
+                                            <% } %>
+                            </div>
+                            <% } %>
+                    </div>
+                    <% } %>
+            </div>
+
+            
+
+            
+
+
+
+
+        </rightmainveiw>
+    </header>
+
+
+
+
+
+    
+</body>
+
+</html>

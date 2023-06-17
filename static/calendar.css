@@ -1,0 +1,249 @@
+header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 100%;
+ 
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+
+}
+
+
+header>h1 {
+  color: blueviolet;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+}
+
+.month-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.day-of-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  grid-gap: 1em;
+}
+
+
+
+.day-of-week>span {
+  height: 4vh;
+  text-align: center;
+}
+
+.prevent-overflow {
+  overflow-x: auto;
+  /* max-width: 100%;
+  width: 100%;  
+  box-sizing: border-box;  */
+}
+
+.prevent-overflow::-webkit-scrollbar {
+  display: none; /* 크롬, 사파리, 오페라, 엣지 */
+}
+
+.days {
+  display: grid;
+  min-height: 80px;
+  height: 100%;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* unvalid 라는 클래스가 없고 호버링 했을때 실행 */
+.date:hover:is(.valid) {
+  background-color: #e3ffea;
+}
+
+
+#formform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calheader {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+header {
+  display: flex;
+ 
+
+
+}
+
+titlecalendar {
+  display: flex;
+  font-size: 3em;
+  font-family: 'Kanit', sans-serif;
+  margin-right: 20px;
+  /* position: absolute;
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); */
+  
+}
+
+
+
+titleyear {
+  display: flex;
+  font-size: 2em;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.titlemonth{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  
+
+}
+
+
+.kanit {
+  font-family: 'Kanit', sans-serif;
+}
+
+leftmainveiw{
+  display: flex;
+  /* margin-left: 30px; */
+
+  flex-grow: 1;
+  /* border-radius: 50% 0px 0px 5px / 30% 0px 0px 5px; */
+ 
+  max-width: 300px;
+  min-width: 300px;
+  box-shadow: 0px 5px 5px 3px #888888;
+  background: linear-gradient(to bottom, #a3ffa7, rgb(255, 255, 255));
+  background-image: linear-gradient(135deg, #fef26b 0%, #60ffa8 100%);
+  background-image: linear-gradient(135deg, #70f9d7 0%, #fef9ea 100%);
+  background-image: linear-gradient(135deg, #3df461 0%, #02beb8 100%);
+  background:linear-gradient(150deg,  #3df461 0%, #02beb8 100%);
+ border-radius: 50px 0px 0px 10px / 50px 0px 0px 10px;
+}
+
+.topviewpanel{
+  background-color: rgba(230, 54, 23, 0);
+  border-radius: 10%;
+  
+
+
+}
+
+.hover-font-color:hover{
+  background:  linear-gradient( 135deg, #70F570 10%, #49C628 100%);; background-clip: text;  -webkit-background-clip: text;   -webkit-text-fill-color: transparent;"
+
+}
+
+
+rightmainveiw{
+  display: flex;
+  margin-right: 20px;
+  flex-direction: column;
+  background-color: white;
+  flex-grow: 2;
+  box-shadow: 5px 5px 5px 3px #888888;
+  border-radius: "0px 10px 10px 0px";
+
+}
+.date-num{
+
+
+}
+
+.subcontainer2{
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+
+
+}
+
+.subcontainer3{
+  display: flex;
+  flex-direction: column;
+
+}
+.hidden{
+  display: none;
+}
+
+
+.datesch{
+
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.datesch:hover{
+
+  background-color: #5eff00c2;
+}
+
+.numschbtn{
+  cursor: pointer;
+}
+
+.shadow{
+  box-shadow: 5px 5px 5px 3px #888888;
+}
+
+.new-green-btn{
+  z-index: 5;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 30px;
+  padding: 0px 15px;
+  text-shadow: rgb(0 0 0 / 25%) 0px 3px 8px;
+  background: linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%);
+  transition: all 0.5s ease 0s;
+  background: #11998e;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #38ef7d, #11998e);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #38ef7d, #11998e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  
+}
+
+.new-green-btn:hover{
+  box-shadow: rgba(52, 182, 194, 0.5) 0px 1px 40px;
+  transition: all 0.1s ease 0s;
+}
